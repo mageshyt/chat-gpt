@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .features {
+    @apply bg-[#41424d] w-full md:w-[260px] m-4 mx-2 p-2 rounded-md cursor-pointer hover:bg-[#101013];
+  }
+  .animate {
+    @apply transform transition-all ease-in duration-150;
+  }
+}

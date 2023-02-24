@@ -4,9 +4,11 @@ import { featuresData } from "../lib/feature.lib";
 
 const HomePage = () => {
   const style = {
-    container: "flex text-white flex-col items-center justify-center h-screen",
+    container:
+      "text-white   h-screen flex flex-col items-center justify-center  ",
     title: "text-5xl font-bold mb-10 ",
-    featureContainer: "flex  items-center justify-between  w-5/12 ",
+    featureContainer:
+      "flex  flex-col md:flex-row my-10 items-center justify-between space-x-6 ",
   };
 
   return (
