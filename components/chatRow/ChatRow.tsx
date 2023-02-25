@@ -4,8 +4,8 @@ import { BsChatLeft } from "react-icons/bs";
 import { BiTrashAlt } from "react-icons/bi";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useCollection, useDocument } from "react-firebase-hooks/firestore";
-import { collection, deleteDoc, doc, orderBy, query } from "firebase/firestore";
+import { useDocument } from "react-firebase-hooks/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import db from "../../firebase";
 type props = {
@@ -34,7 +34,6 @@ const ChatRow = ({ chatId }: props) => {
 
     setActive(pathname.includes(chatId));
   }, [pathname]);
- 
 
   // delete chat
 
@@ -42,6 +41,7 @@ const ChatRow = ({ chatId }: props) => {
     await deleteDoc(doc(db, "users", session?.user?.email!, "chats", chatId));
     router.replace("/");
   };
+
   return (
     <Link
       className={style.container + ` ${active && "bg-[#2B2C2F]"}  `}
@@ -51,8 +51,8 @@ const ChatRow = ({ chatId }: props) => {
 
       {/* chat name */}
       <span className={style.chat_name}>
-        {messages?.data()?.messages?.[messages?.data()?.messages?.length - 1] ||
-          "new chat"}
+        {messages?.data()?.messages?.[messages?.data()?.messages?.length - 1]
+          ?.text || "new chat"}
       </span>
       {/* delete btn */}
 

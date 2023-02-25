@@ -16,4 +16,5 @@
   .chatbox {
     @apply hover:bg-[#2B2C2F] rounded-md text-white p-3;
   }
+ 
 }

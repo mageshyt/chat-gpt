@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import Login from "../components/Login/Login";
-import { SessionProvider } from "../components/sessionProvider/SessionProvider";
+import { SessionProvider } from "../components/Provider/SessionProvider";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { authOptions } from "../pages/api/auth/[...nextauth]";
 import "../styles/globals.css";
