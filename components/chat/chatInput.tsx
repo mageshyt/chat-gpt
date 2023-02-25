@@ -1,19 +1,15 @@
 "use client";
 
-import {
-  addDoc,
-  collection,
-  doc,
-  serverTimestamp,
-  setDoc,
-} from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import React from "react";
 import { TbSend } from "react-icons/tb";
-import db from "../../firebase";
+
 import { AskQuestion } from "../../lib/endpoint.api";
+
+import toast from "react-hot-toast";
+import { addMessage } from "../../lib/firebase.lib";
 import { Message } from "../../typings";
-import toast, { Toaster } from "react-hot-toast";
+import { Timestamp } from "firebase/firestore";
 
 type Props = {
   chatId: string;
@@ -43,7 +39,8 @@ const ChatInput = ({ chatId }: Props) => {
     const trimmedMessage = message.trim();
 
     const messageData: Message = {
-      text: trimmedMessage,
+      text: message,
+      createdAt: Timestamp.now(),
 
       user: {
         _id: session?.user?.email!,
@@ -53,15 +50,9 @@ const ChatInput = ({ chatId }: Props) => {
           `https://avatars.dicebear.com/api/human/${session?.user?.email!}.svg`,
       },
     };
-    const toastId = toast.loading("Sending message...");
+    const res = addMessage(chatId, messageData, session);
 
-    const docRef = await setDoc(
-      doc(db, "users", session?.user?.email!, "chats", chatId),
-      {
-        messages: [messageData],
-        timestamp: serverTimestamp(),
-      }
-    );
+    const toastId = toast.loading("Sending message...");
 
     // ask gpt
     AskQuestion(message, chatId, model, session)

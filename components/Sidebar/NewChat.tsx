@@ -25,7 +25,6 @@ const NewChat = () => {
       {
         timestamp: serverTimestamp(),
         userId: session?.user?.email!,
-        messages: [],
       }
     );
     setIsBlocker(false);

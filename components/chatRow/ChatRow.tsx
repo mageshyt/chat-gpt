@@ -4,10 +4,11 @@ import { BsChatLeft } from "react-icons/bs";
 import { BiTrashAlt } from "react-icons/bi";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useDocument } from "react-firebase-hooks/firestore";
-import { deleteDoc, doc } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { collection, deleteDoc, doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import db from "../../firebase";
+
 type props = {
   chatId: string;
 };
@@ -25,8 +26,8 @@ const ChatRow = ({ chatId }: props) => {
   const { data: session } = useSession();
   const [active, setActive] = React.useState(false);
 
-  const [messages] = useDocument(
-    session && doc(db, "users", session?.user?.email!, "chats", chatId)
+  const [messages] = useCollection(
+    collection(db, "users", session?.user?.email!, "chats", chatId, "messages")
   );
 
   React.useEffect(() => {
@@ -51,8 +52,9 @@ const ChatRow = ({ chatId }: props) => {
 
       {/* chat name */}
       <span className={style.chat_name}>
-        {messages?.data()?.messages?.[messages?.data()?.messages?.length - 1]
-          ?.text || "new chat"}
+        {messages?.docs[messages?.docs.length - 1]?.data().messages.text ||
+          "new chat"}
+        new chat
       </span>
       {/* delete btn */}
 

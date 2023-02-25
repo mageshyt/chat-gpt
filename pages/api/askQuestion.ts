@@ -1,10 +1,13 @@
+import { addMessage } from "./../../lib/firebase.lib";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { query } from "../../lib/queryApi.lib";
+import { Timestamp } from "firebase/firestore";
 
 type Data = {
   answer: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -20,6 +23,19 @@ export default function handler(
     return;
   }
 
-  // const response=
-  res.status(200).json({ answer: "successfull" });
+  const response: string = (await query(prompt, chatId, model)) as string;
+
+  const responseDoc = {
+    text: response,
+    createdAt: Timestamp.now(),
+
+    user: {
+      _id: "ChatGPT",
+      name: "ChatGPT",
+      avatar: "https://links.papareact.com/89k",
+    },
+  };
+  addMessage( chatId, responseDoc, session);
+
+  res.status(200).json({ answer: response });
 }
