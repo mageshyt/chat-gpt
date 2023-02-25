@@ -1,36 +1,24 @@
 "use client";
-import { collection, doc, getDoc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
-import db from "../../../firebase";
+import Chat from "../../../components/chat/Chat";
+
+import ChatInput from "../../../components/chat/chatInput";
 
 type props = {
-  chatId: string;
+  params: {
+    id: string;
+  };
 };
 
-const ChatPage = ({ chatId }: props) => {
-  console.log(chatId);
+const ChatPage = ({ params: { id } }: props) => {
   const { data: session } = useSession();
 
-  useEffect(() => {
-    // fetch the chat data
-    // fetch the chat messages
-    const fetchChat = async () => {
-      const chatRef = doc(
-        db,
-        "users",
-        session?.user?.email!,
-        "chats",
-        "M7HgKTcCuR54ApM7vFZF"
-      );
-
-      const chatSnap = await getDoc(chatRef);
-      console.log(chatSnap.data());
-    };
-
-    fetchChat();
-  }, []);
-  return <div>page</div>;
+  return (
+    <div>
+      <Chat chatId={id} />
+      <ChatInput chatId={id} />
+    </div>
+  );
 };
 
 export default ChatPage;
