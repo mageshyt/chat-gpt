@@ -9,4 +9,7 @@
   .animate {
     @apply transform transition-all ease-in duration-200;
   }
+  .center {
+    @apply flex justify-center items-center;
+  }
 }
