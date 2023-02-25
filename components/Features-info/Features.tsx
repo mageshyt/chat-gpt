@@ -27,8 +27,8 @@ const Features = ({ title, examples }: featureProps) => {
       <div className=" flex items-center flex-col mx-3">
         {examples.map((example, index) => {
           return (
-            <div className={style.example}>
-              <p>{example}</p>
+            <div key={index} className={style.example}>
+              {example}
             </div>
           );
         })}

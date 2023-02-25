@@ -4,9 +4,9 @@
 
 @layer components {
   .features {
-    @apply bg-[#41424d] w-full md:w-[260px] m-4 mx-2 p-2 rounded-md cursor-pointer hover:bg-[#101013];
+    @apply bg-gray-600/50 max-w-[350px] m-4 mx-2 p-3 rounded-md cursor-pointer hover:bg-[#101013];
   }
   .animate {
-    @apply transform transition-all ease-in duration-150;
+    @apply transform transition-all ease-in duration-200;
   }
 }

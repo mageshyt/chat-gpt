@@ -1,4 +1,3 @@
-import React from "react";
 import Features from "../components/Features-info/Features";
 import { featuresData } from "../lib/feature.lib";
 
