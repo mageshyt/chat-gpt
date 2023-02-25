@@ -12,4 +12,10 @@
   .center {
     @apply flex justify-center items-center;
   }
+
+  .chatbox {
+    @apply bg-[#2B2C2F] p-3   
+    rounded-sm  w-full flex items-center animate
+       hover:bg-[#0d0d0e]  cursor-pointer space-x-2 border bg-opacity-25 text-white;
+  }
 }

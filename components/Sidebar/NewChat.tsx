@@ -1,15 +1,45 @@
+"use client";
+import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import db from "../../firebase";
 const NewChat = () => {
   const style = {
-    container:
-      "bg-[#2B2C2F] p-3 rounded-md flex items-center animate hover:scale-105 hover:bg-[#0d0d0e]  cursor-pointer space-x-2 border bg-opacity-25 text-white",
+    container: "  disabled:cursor-not-allowed chatbox  ",
+  };
+
+  const router = useRouter();
+
+  const [isBlocker, setIsBlocker] = React.useState(false);
+  const { data: session } = useSession();
+  
+  const createChat = async () => {
+    setIsBlocker(true);
+    if (!session) return null;
+
+    const doc = await addDoc(
+      collection(db, "users", session?.user?.email!, "chats"),
+      {
+        timestamp: serverTimestamp(),
+        userId: session?.user?.email!,
+        messages: [],
+      }
+    );
+    setIsBlocker(false);
+    // push to the doc id
+    router.push(`/chat/${doc.id}`);
   };
   return (
-    <div className={style.container}>
+    <button
+      disabled={isBlocker}
+      onClick={() => createChat()}
+      className={style.container}
+    >
       <AiOutlinePlusCircle className="text-2xl mr-3" />
       <h1>New Chat</h1>
-    </div>
+    </button>
   );
 };
 
