@@ -7,14 +7,15 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import db from "../../firebase";
 const NewChat = () => {
   const style = {
-    container: "  disabled:cursor-not-allowed chatbox  ",
+    container:
+      "  disabled:cursor-not-allowed  flex p-3 w-full hover:bg-[#2B2C2F] animate hover:scale-105 text-white space-x-2 border-gray-600  border-[2px] rounded-xl  ",
   };
 
   const router = useRouter();
 
   const [isBlocker, setIsBlocker] = React.useState(false);
   const { data: session } = useSession();
-  
+
   const createChat = async () => {
     setIsBlocker(true);
     if (!session) return null;
