@@ -52,7 +52,7 @@ const ChatInput = ({ chatId }: Props) => {
     };
     const res = addMessage(chatId, messageData, session);
 
-    const toastId = toast.loading("Sending message...");
+    const toastId = toast.loading("chatGpt is Thinking...");
 
     // ask gpt
     AskQuestion(message, chatId, model, session)
