@@ -1,10 +1,9 @@
 "use client";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import db from "../../firebase";
-import { getAllMessage } from "../../lib/firebase.lib";
 import MessageContainer from "../Message/Message";
 
 type Props = {
@@ -30,7 +29,7 @@ const Chat = ({ chatId }: Props) => {
   );
   console.log(messages?.docs.map((doc) => doc.data()));
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto scrollbar-hide">
       {messages?.docs.map((doc, idx: number) => (
         <MessageContainer key={idx} messages={doc.data().messages} />
       ))}

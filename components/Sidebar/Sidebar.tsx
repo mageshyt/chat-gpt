@@ -5,12 +5,11 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, orderBy, query } from "firebase/firestore";
 import db from "../../firebase";
 import ChatRow from "../chatRow/ChatRow";
-import { model } from "../../lib/feature.lib";
 import ModelSelection from "../ModelSelection/ModelSelection";
 
 const Sidebar = () => {
   const style = {
-    container: "p-3 h-screen   flex flex-col",
+    container: "p-3  h-screen   flex flex-col",
   };
 
   const { data: session } = useSession();
@@ -25,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <div className={style.container}>
-      <div className="flex-1">
+      <div className="flex-1 ">
         {/* new chat */}
         <NewChat />
         {/* select chat modal */}
@@ -44,6 +43,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
+
       {/* logout */}
       {session && (
         <div className=" center flex-col ">

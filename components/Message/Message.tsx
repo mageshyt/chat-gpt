@@ -18,7 +18,7 @@ const MessageContainer = ({ messages }: Props) => {
     <div
       className={
         style.container +
-        ` ${messages.user.name != "ChatGPT" ? "bg-[#141414]" : "bg-[#444654]"} `
+        ` ${messages.user.name != "ChatGPT" ? "bg-[#202123]" : "bg-[#444654]"} `
       }
     >
       {/* user profile */}

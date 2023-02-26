@@ -5,7 +5,7 @@ import { TiWarningOutline } from "react-icons/ti";
 
 const Features = ({ title, examples }: featureProps) => {
   const style = {
-    container: "flex flex-col items-center",
+    container: "flex flex-col w-full items-center",
     title: "text-2xl font-bold ",
     example: "features animate ",
     iconStyle: "  text-2xl",

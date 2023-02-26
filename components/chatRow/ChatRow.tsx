@@ -18,7 +18,7 @@ const ChatRow = ({ chatId }: props) => {
     icon: "h-5 w-5 font-bold      text-white",
     container: "flex  items-center  chatbox",
 
-    chat_name: "flex-1  ml-2 truncate hidden md:inline-flex",
+    chat_name: "flex-1  ml-2 truncate text-xs md:text-sm  md:inline-flex",
   };
 
   const pathname = usePathname();

@@ -7,6 +7,7 @@ export const AskQuestion = async (
   session: any
 ) => {
   try {
+    console.log("res", model);
     const res = await axios.post("/api/askQuestion", {
       prompt: message,
       chatId,

@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
-import { model } from "../../lib/feature.lib";
+ 
 import Select from "react-select";
-import { listModels } from "../../lib/endpoint.api";
+ 
 
 import useSwr from "swr";
 import axios from "axios";

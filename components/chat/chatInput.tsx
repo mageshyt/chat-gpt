@@ -12,6 +12,7 @@ import { Message } from "../../typings";
 import { Timestamp } from "firebase/firestore";
 import ModelSelection from "../ModelSelection/ModelSelection";
 
+import useSwr from "swr";
 type Props = {
   chatId: string;
 };
@@ -29,7 +30,10 @@ const ChatInput = ({ chatId }: Props) => {
   const [message, setMessage] = React.useState("");
 
   // todo useSwr to get modal
-  const model = "text-davinci-003";
+
+  const { data: model, mutate: setModal } = useSwr("model", {
+    fallbackData: "text-davinci-003",
+  });
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -40,9 +44,9 @@ const ChatInput = ({ chatId }: Props) => {
     const trimmedMessage = message.trim();
 
     const messageData: Message = {
-      text: message,
+      text: trimmedMessage,
       createdAt: Timestamp.now(),
-
+      
       user: {
         _id: session?.user?.email!,
         name: session?.user?.name!,

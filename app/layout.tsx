@@ -11,12 +11,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const style = {
-    container: "flex",
-    mainContent: "bg-[#343541] flex-1",
-    sideBarContainer: " md:w-[18rem]    h-screen bg-[#202123] overflow-y-auto",
+    container: "flex ",
+    mainContent: "bg-[#343541] overflow-hidden flex-1",
+    sideBarContainer:
+      " md:w-[18rem]  w-[14rem]   h-screen bg-[#202123] overflow-y-auto",
   };
 
   const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <head />
@@ -29,6 +31,7 @@ export default async function RootLayout({
             <div className={style.container}>
               <div className={style.sideBarContainer}>
                 {/* side bar */}
+
                 <Sidebar />
               </div>
 
