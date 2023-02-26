@@ -12,9 +12,9 @@ export default async function RootLayout({
 }) {
   const style = {
     container: "flex ",
-    mainContent: "bg-[#343541] overflow-hidden flex-1",
+    mainContent: "bg-[#343541] overflow-y-auto flex-1",
     sideBarContainer:
-      " md:w-[18rem]  w-[14rem]   h-screen bg-[#202123] overflow-y-auto",
+      " md:w-[18rem]  w-[14rem] sm:block hidden    h-screen bg-[#202123] overflow-y-auto",
   };
 
   const session = await getServerSession(authOptions);

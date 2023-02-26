@@ -12,7 +12,8 @@ type Props = {
 
 const MessageContainer = ({ messages }: Props) => {
   const style = {
-    container: "text-white  p-3 justify-start space-x-3 flex rounded-md m-3",
+    container:
+      "text-white overflow-hidden  p-3 justify-start space-x-3 flex rounded-md m-3",
   };
   return (
     <div
@@ -32,7 +33,7 @@ const MessageContainer = ({ messages }: Props) => {
       </div>
 
       {/* message */}
-      <div className="flex-1 ml-2">
+      <div className="flex-1  w-full ml-2">
         <p>{messages.text}</p>
       </div>
     </div>

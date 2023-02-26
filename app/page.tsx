@@ -4,7 +4,7 @@ import { featuresData } from "../lib/feature.lib";
 const HomePage = () => {
   const style = {
     container:
-      "text-white   h-screen flex overflow-y-auto flex-col items-center justify-center  ",
+      "text-white   h-screen flex overflow-y-auto  flex-col items-center justify-center  ",
     title: "text-5xl font-bold mb-10 ",
     featureContainer:
       "flex  flex-col md:flex-row my-10 items-center justify-between space-x-6 ",

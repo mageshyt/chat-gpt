@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
- 
+
 import Select from "react-select";
- 
 
 import useSwr from "swr";
 import axios from "axios";
@@ -28,6 +27,7 @@ const ModelSelection = () => {
   return (
     <div>
       <Select
+        menuPosition="fixed"
         defaultValue={model}
         className="my-3"
         options={models}
