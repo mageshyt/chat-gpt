@@ -7,3 +7,8 @@ export type Message = {
     avatar: string;
   };
 };
+
+export type Options = {
+  value: string;
+  label: string;
+};

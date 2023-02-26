@@ -1,3 +1,4 @@
+import axios from "axios";
 import { openAi } from "./openAi.lib";
 
 export const query = async (prompt: string, chatId: string, model: string) => {
@@ -22,3 +23,6 @@ export const query = async (prompt: string, chatId: string, model: string) => {
 
   return res;
 };
+
+
+

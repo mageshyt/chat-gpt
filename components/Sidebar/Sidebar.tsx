@@ -5,6 +5,9 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, orderBy, query } from "firebase/firestore";
 import db from "../../firebase";
 import ChatRow from "../chatRow/ChatRow";
+import { model } from "../../lib/feature.lib";
+import ModelSelection from "../ModelSelection/ModelSelection";
+
 const Sidebar = () => {
   const style = {
     container: "p-3 h-screen   flex flex-col",
@@ -26,6 +29,14 @@ const Sidebar = () => {
         {/* new chat */}
         <NewChat />
         {/* select chat modal */}
+        <div className="hidden md:inline">
+          <ModelSelection />
+        </div>
+        {loading && (
+          <div className="bg-white p-2 rounded-md text-center ">
+            <p>Loading chat...</p>
+          </div>
+        )}
         <div className="mt-3 space-y-3 w-full">
           {/* chatList */}
           {chats?.docs.map((chat, idx) => (

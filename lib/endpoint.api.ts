@@ -21,3 +21,9 @@ export const AskQuestion = async (
     throw err;
   }
 };
+
+export const listModels = async () => {
+  const res = await axios.get("/api/getEngine");
+
+  return res.data.modelOptions;
+};

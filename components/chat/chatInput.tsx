@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { addMessage } from "../../lib/firebase.lib";
 import { Message } from "../../typings";
 import { Timestamp } from "firebase/firestore";
+import ModelSelection from "../ModelSelection/ModelSelection";
 
 type Props = {
   chatId: string;
@@ -69,7 +70,7 @@ const ChatInput = ({ chatId }: Props) => {
     setMessage("");
   };
   return (
-    <div className={"flex  justify-center mx-4  mb-4"}>
+    <div className={"flex  justify-center mx-4 flex-col  mb-4"}>
       <form onSubmit={sendMessage} className={style.container}>
         <input
           type="text"
@@ -87,6 +88,11 @@ const ChatInput = ({ chatId }: Props) => {
           <TbSend className={style.icon} />
         </button>
       </form>
+
+      {/* chat model */}
+      <div className="md:hidden">
+        <ModelSelection />
+      </div>
     </div>
   );
 };

@@ -5,7 +5,6 @@ export type featureProps = {
 
 export const featuresData: featureProps[] = [
   {
-    
     title: "Examples",
     examples: [
       "Explain quantum computing in simple terms",
@@ -29,5 +28,20 @@ export const featuresData: featureProps[] = [
       "Mav occasionally produce harmful instructions or biased content",
       "Limited knowledge of world and events after 2021",
     ],
+  },
+];
+
+export const model: any = [
+  {
+    value: "text-davinci",
+    label: "text-davinci-003",
+  },
+  {
+    value: "code-davinci-002",
+    label: "Code Davinci",
+  },
+  {
+    value: "text-babbage",
+    label: "text-babbage-001",
   },
 ];
